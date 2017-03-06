@@ -1,0 +1,49 @@
+function notifyMe() {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var options = {
+      body: "prasanna",
+      badge:'kp',
+      sound: 'http://35.154.95.101/chakravarti/upload/audio_songs/1.mp3',
+      icon: "http://localhost/marketplace/public/superadmin/img/new%20logo.PNG"
+  }
+  var n = new Notification("asdas",options);
+        
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var options = {
+      body: "prasanna",
+      icon: "http://localhost/marketplace/public/superadmin/img/new%20logo.PNG"
+  }
+  var n = new Notification("asdas",options);
+        //var notification = new Notification("Hi there!"+Math.random());
+        //var image = Notification.image;
+      }
+    });
+  }
+
+  // At last, if the user has denied notifications, and you 
+  // want to be respectful there is no need to bother them any more.
+}Notification.requestPermission().then(function(result) {
+  console.log(result);
+});function spawnNotification(theBody,theIcon,theTitle) {
+  var options = {
+      body: "klklkl",
+      icon: theIcon
+  }
+  var n = new Notification(theTitle,options);
+}
+<!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/API/notification -->
+
+<button onclick="notifyMe()">Notify me!</button>
